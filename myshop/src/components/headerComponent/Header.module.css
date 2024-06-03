@@ -30,6 +30,7 @@
   margin: 0;
   margin-right: 0.5em;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .profile {
@@ -63,7 +64,5 @@
 .link:hover,
 .link:focus {
   color: purple;
-}
-.link.home {
   text-decoration: none;
 }

@@ -4,9 +4,9 @@ import styles from "./FilterSelect.module.css";
 const FilterSelect = ({ onChange }) => {
   return (
     <select className={styles.filter} onChange={onChange}>
-      <option value="">Todos</option>
-      <option value="10">$10 o menos</option>
-      <option value="20">$20 o menos</option>
+      <option value="">All</option>
+      <option value="10">10€ or less</option>
+      <option value="20">20€ or less</option>
     </select>
   );
 };

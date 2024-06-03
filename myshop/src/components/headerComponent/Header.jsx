@@ -8,8 +8,8 @@ const Header = () => {
       <div className={styles.leftSection}>
         <h1 className={styles.title}>myShop</h1>
         <div>
-          <Link href="/">
-            <p className={`${styles.link} ${styles.home}`}>Home</p>
+          <Link href="/" legacyBehavior>
+            <a className={`${styles.link} ${styles.home}`}>Home</a>
           </Link>
         </div>
         <p className={styles.profile}>Profile</p>
