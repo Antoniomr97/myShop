@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./Signup.module.css";
-import Link from "next/link";
 
 export default function Signup() {
   const containerStyle = {

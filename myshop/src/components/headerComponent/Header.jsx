@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import styles from "./Header.module.css";
 
 const Header = () => {
+  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsDropdownVisible(!isDropdownVisible);
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.leftSection}>
@@ -12,7 +18,16 @@ const Header = () => {
             <a className={`${styles.link} ${styles.home}`}>Home</a>
           </Link>
         </div>
-        <p className={styles.profile}>Profile</p>
+        <div className={styles.profileContainer} onClick={toggleDropdown}>
+          <p className={styles.profile}>Profile</p>
+          {isDropdownVisible && (
+            <div className={styles.dropdownMenu}>
+              <Link href="/changePassword" legacyBehavior>
+                <a className={styles.dropdownItem}>Cambiar contraseña</a>
+              </Link>
+            </div>
+          )}
+        </div>
       </div>
       <div className={styles.rightSection}>
         <input
