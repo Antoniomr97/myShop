@@ -66,3 +66,19 @@
   color: purple;
   text-decoration: none;
 }
+
+.loginButton {
+  padding: 5px 10px;
+  font-size: 1.2em;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+  color: black;
+}
+
+.loginButton:hover,
+.loginButton:focus {
+  color: purple;
+  text-decoration: none;
+}

@@ -7,6 +7,12 @@ const FilterSelect = ({ onChange }) => {
       <option value="">All</option>
       <option value="10">10€ or less</option>
       <option value="20">20€ or less</option>
+      <option value="rpg">RPG</option>
+      <option value="action">Action</option>
+      <option value="adventure">Adventure</option>
+      <option value="puzzle">Puzzle</option>
+      <option value="strategy">Strategy</option>
+      <option value="sports">Sports</option>
     </select>
   );
 };

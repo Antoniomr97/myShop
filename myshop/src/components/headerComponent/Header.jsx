@@ -20,7 +20,9 @@ const Header = () => {
           placeholder="Search"
           className={styles.searchInput}
         />
-        <button className={styles.loginButton}>Login</button>
+        <Link href="/login" legacyBehavior>
+          <a className={styles.loginButton}>Login</a>
+        </Link>
       </div>
     </header>
   );
