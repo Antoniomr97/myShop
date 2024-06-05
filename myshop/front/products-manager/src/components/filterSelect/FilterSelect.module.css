@@ -1,9 +1,29 @@
 .filter {
   margin-top: 1rem;
   margin-left: 1rem;
-  text-align: center;
+  text-align: left;
   font-size: 1.2rem;
   font-weight: bold;
   border-radius: 0.5rem;
   width: 15%;
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+  margin-right: 0.5em;
+  cursor: pointer;
+  color: black;
+}
+
+.price:hover,
+.price:focus {
+  color: purple;
+  text-decoration: none;
+}
+
+.dropdownItem {
+  color: black;
+  text-decoration: none;
 }
