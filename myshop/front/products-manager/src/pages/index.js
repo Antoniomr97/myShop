@@ -9,9 +9,15 @@ export default function Home() {
     <>
       <Header />
       <main className={styles.main}>
-        <FilterSelect />
-        <Products />
-        <Cart />
+        <div className={styles.sidebar}>
+          <FilterSelect />
+        </div>
+        <div className={styles.content}>
+          <Products />
+        </div>
+        <div className={styles.sidebar}>
+          <Cart />
+        </div>
       </main>
     </>
   );

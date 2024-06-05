@@ -14,10 +14,10 @@ const FilterSelect = ({ onChange }) => {
   };
   return (
     <div className={styles.filter}>
-      <h2>Filter By: </h2>
+      <h2 className={styles.filterHeader}>Filter: </h2>
       <div>
         <h3 className={styles.price} onClick={toggleDropdown}>
-          By Price
+          Price
         </h3>
         {isDropdownVisible && (
           <div className={styles.dropdownMenu}>
@@ -36,8 +36,10 @@ const FilterSelect = ({ onChange }) => {
         )}
       </div>
       <br />
-      <div onClick={toggleDropdown2}>
-        <h3 className={styles.price}>By Gender</h3>
+      <div>
+        <h3 onClick={toggleDropdown2} className={styles.price}>
+          Gender
+        </h3>
         {isDropdownVisible2 && (
           <div className={styles.dropdownMenu}>
             <label>

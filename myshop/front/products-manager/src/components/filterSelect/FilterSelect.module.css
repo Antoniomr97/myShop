@@ -1,18 +1,18 @@
 .filter {
   margin-top: 1rem;
-  margin-left: 1rem;
   text-align: left;
   font-size: 1.2rem;
   font-weight: bold;
-  border-radius: 0.5rem;
-  width: 15%;
+  width: 100%; /* Ajustado para ocupar el 100% del sidebar */
+  background-color: rgb(159, 162, 164);
+  padding: 10px; /* Aumentado para un mejor relleno */
+  border-radius: 0.3rem;
 }
 
 .price {
   font-size: 1.5rem;
   font-weight: bold;
   margin: 0;
-  margin-right: 0.5em;
   cursor: pointer;
   color: black;
 }
@@ -26,4 +26,9 @@
 .dropdownItem {
   color: black;
   text-decoration: none;
+}
+
+.filterHeader {
+  margin: 0;
+  margin-bottom: 10px;
 }

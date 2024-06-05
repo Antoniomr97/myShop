@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { getAllProducts } from "../../api/productFetch";
+import styles from "./Products.module.css";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -9,21 +10,37 @@ const Products = () => {
     const getAllProductsAux = async () => {
       const productsAux = await getAllProducts();
       console.log(productsAux);
-      setProducts(productsAux.products);
+      setProducts(productsAux.data);
     };
     getAllProductsAux();
   }, []);
 
   return (
-    <div className="productsContainer">
-      <h1>Products</h1>
-      {products.map((product) => {
-        return (
-          <div className="CardContainer" key={product.id}>
-            <span>{product.name}</span>
+    <div className={styles.productsWrapper}>
+      <div className={styles.productsContainer}>
+        {products.map((product) => (
+          <div className={styles.card} key={product.id}>
+            <img
+              className={styles.productImage}
+              src={product.image}
+              alt={product.name}
+            />
+            <div className={styles.content}>
+              <h4>{product.name}</h4>
+              <div className={styles.cardContent}>
+                <span>Gender: {product.category}</span>
+                <br />
+                <span>Score: {product.score}</span>
+              </div>
+              <div className={styles.priceContainer}>
+                <span>Price: {product.price}€</span>
+                <br />
+                <button className={styles.buttonToCart}>To Cart</button>
+              </div>
+            </div>
           </div>
-        );
-      })}
+        ))}
+      </div>
     </div>
   );
 };
