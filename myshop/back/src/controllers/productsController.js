@@ -1,5 +1,5 @@
-import { find, newProductModel } from "../mocks/productMethodMongoDB";
-import productsDB from "../initialData/productsDB";
+const { find, newProductModel } = require("../mocks/productMethodMongoDB");
+const productsDB = require("../initialData/productsDB");
 
 const getProducts = (req, res) => {
   try {

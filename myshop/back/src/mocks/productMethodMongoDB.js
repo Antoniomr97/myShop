@@ -1,8 +1,8 @@
-import productsDB from "../initialData/productsDB";
+const productsDB = require("../initialData/productsDB");
 
 const find = (id) => {
   if (!id) {
-    return productsDBuctsDB;
+    return productsDB;
   } else {
     const product = productsDB.find((p) => p.id == id);
     return product;

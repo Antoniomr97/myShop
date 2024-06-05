@@ -1,8 +1,8 @@
-import { getProducts, loadData } from "../controllers/productsController";
+const { getProducts, loadData } = require("../controllers/productsController");
 
-const ProductsRouter = require("express").Router();
+const productsRouter = require("express").Router();
 
-ProductsRouter.get("/", getProducts);
-ProductsRouter.get("/loadData", loadData);
+productsRouter.get("/", getProducts);
+productsRouter.get("/loadData", loadData);
 
-module.exports = ProductsRouter;
+module.exports = productsRouter;

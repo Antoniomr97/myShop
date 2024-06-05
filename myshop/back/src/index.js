@@ -1,14 +1,14 @@
 const express = require("express");
 const cors = require("cors");
-const mongoose = require("mongoose");
-import ProductsRouter from "./routes/productRoutes";
+// const mongoose = require("mongoose");
+const productsRouter = require("./routes/productRoutes");
 const app = express();
 const port = 9000;
 
 app.use(express.json());
 app.use(cors());
 
-app.use("/products", ProductsRouter);
+app.use("/products", productsRouter);
 
 app.listen(port, () => {
   console.log(`Port ${port} running`);
