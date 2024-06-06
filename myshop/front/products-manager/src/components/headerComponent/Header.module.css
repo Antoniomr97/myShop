@@ -67,6 +67,12 @@
   text-decoration: none;
 }
 
+.profile:hover,
+.profile:focus {
+  color: purple;
+  text-decoration: none;
+}
+
 .loginButton {
   padding: 5px 10px;
   font-size: 1.2em;
@@ -85,5 +91,11 @@
 
 .dropdownItem {
   color: black;
+  text-decoration: none;
+}
+
+.dropdownItem:hover,
+.dropdownItem:focus {
+  color: purple;
   text-decoration: none;
 }

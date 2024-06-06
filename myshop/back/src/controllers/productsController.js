@@ -102,21 +102,30 @@ const updateProduct = async (req, res) => {
   }
 };
 
-//GET PRODUCT BY NAME
-const getProductsByName = async (req, res) => {
+//GET PRODUCT BY ID
+const getProductsById = async (req, res) => {
   try {
-    const id = req.params.id;
+    const id = req.params._id;
 
     const product = await productModel.findById(id);
+    if (!product) {
+      return res.status(404).json({
+        status: "failed",
+        data: null,
+        error: "Product not found",
+      });
+    }
     res.status(200).json({
       status: "succeeded",
       data: product,
       error: null,
     });
   } catch (error) {
-    res
-      .status(500)
-      .json({ status: "failed", data: null, error: error.message });
+    res.status(500).json({
+      status: "failed",
+      data: null,
+      error: error.message,
+    });
   }
 };
 
@@ -142,7 +151,7 @@ const loadData = async (req, res) => {
 
 module.exports = {
   getProducts,
-  getProductsByName,
+  getProductsById,
   createProduct,
   deleteProduct,
   updateProduct,

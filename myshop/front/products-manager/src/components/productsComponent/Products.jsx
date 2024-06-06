@@ -1,32 +1,47 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getAllProducts } from "../../api/productFetch";
 import styles from "./Products.module.css";
+import Link from "next/link";
+import { useProduct } from "../../context/ProductContext";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
+  const { setSelectedProductId } = useProduct();
 
   useEffect(() => {
     const getAllProductsAux = async () => {
       const productsAux = await getAllProducts();
-      console.log(productsAux);
       setProducts(productsAux.data);
     };
     getAllProductsAux();
   }, []);
 
+  const handleClick = (id) => {
+    console.log("Setting selected product ID:", id);
+    setSelectedProductId(id);
+  };
+
   return (
     <div className={styles.productsWrapper}>
       <div className={styles.productsContainer}>
         {products.map((product) => (
-          <div className={styles.card} key={product.id}>
+          <div className={styles.card} key={product._id}>
             <img
               className={styles.productImage}
               src={product.image}
               alt={product.name}
             />
             <div className={styles.content}>
-              <h4>{product.name}</h4>
+              <h4>
+                <Link href="/productDetails" legacyBehavior>
+                  <a
+                    className={styles.linkDetails}
+                    onClick={() => handleClick(product._id)}
+                  >
+                    {product.name}
+                  </a>
+                </Link>
+              </h4>
               <div className={styles.cardContent}>
                 <span>Gender: {product.category}</span>
                 <br />

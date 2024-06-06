@@ -3,9 +3,9 @@
   text-align: left;
   font-size: 1.2rem;
   font-weight: bold;
-  width: 100%; /* Ajustado para ocupar el 100% del sidebar */
+  width: 100%;
   background-color: rgb(159, 162, 164);
-  padding: 10px; /* Aumentado para un mejor relleno */
+  padding: 10px;
   border-radius: 0.3rem;
 }
 

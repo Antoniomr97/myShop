@@ -1,0 +1,38 @@
+.product_details_container {
+  padding-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+.key {
+  font-weight: bold;
+}
+
+.value {
+  padding: 1rem;
+  padding-left: 2.7rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+.product_details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 20px;
+}
+
+.product-details img {
+  max-width: 200px;
+}
+
+.product-details span {
+  margin-bottom: 10px;
+}
+
+.button {
+  font-size: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}

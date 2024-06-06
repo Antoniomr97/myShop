@@ -1,7 +1,7 @@
 const {
   getProducts,
   loadData,
-  getProductsByName,
+  getProductsById,
   createProduct,
   updateProduct,
   deleteProduct,
@@ -10,10 +10,10 @@ const {
 const productsRouter = require("express").Router();
 
 productsRouter.get("/", getProducts);
-productsRouter.get("/:id", getProductsByName);
-productsRouter.post("/", createProduct);
-productsRouter.put("/:id", updateProduct);
-productsRouter.delete("/:id", deleteProduct);
 // productsRouter.get("/loadData", loadData);
+productsRouter.get("/:_id", getProductsById);
+productsRouter.post("/", createProduct);
+productsRouter.put("/:_id", updateProduct);
+productsRouter.delete("/:_id", deleteProduct);
 
 module.exports = productsRouter;
