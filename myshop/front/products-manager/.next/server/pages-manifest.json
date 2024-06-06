@@ -2,7 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/productDetails": "pages/productDetails.js",
   "/": "pages/index.js",
-  "/changePassword": "pages/changePassword.js"
+  "/createProduct": "pages/createProduct.js",
+  "/signup": "pages/signup.js"
 }
