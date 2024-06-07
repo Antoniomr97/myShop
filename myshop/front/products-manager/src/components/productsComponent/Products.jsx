@@ -3,10 +3,12 @@ import { getAllProducts } from "../../api/productFetch";
 import styles from "./Products.module.css";
 import Link from "next/link";
 import { useProduct } from "../../context/ProductContext";
+import { useRouter } from "next/router";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
   const { setSelectedProductId } = useProduct();
+  const router = useRouter();
 
   useEffect(() => {
     const getAllProductsAux = async () => {
@@ -19,6 +21,13 @@ const Products = () => {
   const handleClick = (id) => {
     console.log("Setting selected product ID:", id);
     setSelectedProductId(id);
+    router.push(
+      {
+        pathname: "/productDetails",
+        query: { id },
+      },
+      `/productDetails/${id}`
+    );
   };
 
   return (
@@ -33,10 +42,13 @@ const Products = () => {
             />
             <div className={styles.content}>
               <h4>
-                <Link href="/productDetails" legacyBehavior>
+                <Link href={"/productDetails"} legacyBehavior>
                   <a
                     className={styles.linkDetails}
-                    onClick={() => handleClick(product._id)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleClick(product._id);
+                    }}
                   >
                     {product.name}
                   </a>

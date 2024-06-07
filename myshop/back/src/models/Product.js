@@ -8,19 +8,23 @@ const productSchema = new Schema({
   },
   image: {
     type: String,
-    require: true,
+    required: true,
   },
   name: {
     type: String,
-    require: true,
+    required: true,
   },
   category: {
     type: String,
-    require: true,
+    required: true,
   },
   price: {
     type: Number,
-    require: true,
+    required: true,
+  },
+  score: {
+    type: Number,
+    required: true,
   },
 });
 

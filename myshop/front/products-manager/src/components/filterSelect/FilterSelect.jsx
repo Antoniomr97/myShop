@@ -4,6 +4,7 @@ import styles from "./FilterSelect.module.css";
 const FilterSelect = ({ onChange }) => {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const [isDropdownVisible2, setIsDropdownVisible2] = useState(false);
+  const [isDropdownVisible3, setIsDropdownVisible3] = useState(false);
 
   const toggleDropdown = () => {
     setIsDropdownVisible(!isDropdownVisible);
@@ -11,6 +12,10 @@ const FilterSelect = ({ onChange }) => {
 
   const toggleDropdown2 = () => {
     setIsDropdownVisible2(!isDropdownVisible2);
+  };
+
+  const toggleDropdown3 = () => {
+    setIsDropdownVisible3(!isDropdownVisible3);
   };
   return (
     <div className={styles.filter}>
@@ -22,15 +27,15 @@ const FilterSelect = ({ onChange }) => {
         {isDropdownVisible && (
           <div className={styles.dropdownMenu}>
             <label className={styles.dropdownItem}>
-              <input type="checkbox" value="10" /> 10€ or less
+              <input type="radio" name="precio" value="10" /> 10€ or less
             </label>
             <br />
             <label className={styles.dropdownItem}>
-              <input type="checkbox" value="15" /> 15€ or less
+              <input type="radio" name="precio" value="15" /> 15€ or less
             </label>
             <br />
             <label className={styles.dropdownItem}>
-              <input type="checkbox" value="20" /> 20€ or less
+              <input type="radio" name="precio" value="20" /> 20€ or less
             </label>
           </div>
         )}
@@ -78,6 +83,23 @@ const FilterSelect = ({ onChange }) => {
             <br />
             <label className={styles.dropdownItem}>
               <input type="checkbox" value="sports" /> Sports
+            </label>
+          </div>
+        )}
+      </div>
+      <br />
+      <div>
+        <h3 className={styles.price} onClick={toggleDropdown3}>
+          Score
+        </h3>
+        {isDropdownVisible3 && (
+          <div className={styles.dropdownMenu}>
+            <label className={styles.dropdownItem}>
+              <input type="radio" name="precio" value="10" /> Best to Worst
+            </label>
+            <br />
+            <label className={styles.dropdownItem}>
+              <input type="radio" name="precio" value="15" /> Worst to Best
             </label>
           </div>
         )}

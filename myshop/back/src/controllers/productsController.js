@@ -25,7 +25,7 @@ const createProduct = async (req, res) => {
     const newProduct = await productModel({
       image: productData.image,
       name: productData.name,
-      gender: productData.category,
+      category: productData.category,
       price: productData.price,
       score: productData.score,
     });
@@ -34,7 +34,7 @@ const createProduct = async (req, res) => {
     console.log(newProduct);
     res.status(200).json({
       status: "succeeded",
-      data: allProducts,
+      data: productData,
       error: null,
     });
   } catch (error) {
@@ -66,42 +66,41 @@ const deleteProduct = async (req, res) => {
 const updateProduct = async (req, res) => {
   try {
     const id = req.params.id;
+    console.log("Received ID:", id);
     const { image, name, category, price, score } = req.body;
+    console.log("Received data:", { image, name, category, price, score });
 
     const productAux = await productModel.findById(id);
+    console.log("Found product:", productAux);
 
-    if (!productAux) return res.status(404).send("The product does not exist");
+    if (!productAux) {
+      console.error("Product not found");
+      return res.status(404).json({
+        status: "failed",
+        data: null,
+        error: "The product does not exist",
+      });
+    }
 
-    if (image) {
-      productAux.image = image;
-    }
-    if (name) {
-      productAux.name = name;
-    }
-    if (category) {
-      productAux.category = category;
-    }
-    if (price) {
-      productAux.price = price;
-    }
-    if (score) {
-      productAux.score = score;
-    }
+    if (image) productAux.image = image;
+    if (name) productAux.name = name;
+    if (category) productAux.category = category;
+    if (price) productAux.price = price;
+    if (score) productAux.score = score;
 
     await productAux.save();
+    console.log("Updated product:", productAux);
 
-    res.status(200).json({
-      status: "succeeded",
-      data: null,
-      error: null,
-    });
+    res
+      .status(200)
+      .json({ status: "succeeded", data: productAux, error: null });
   } catch (error) {
+    console.error("Error updating product:", error);
     res
       .status(500)
       .json({ status: "failed", data: null, error: error.message });
   }
 };
-
 //GET PRODUCT BY ID
 const getProductsById = async (req, res) => {
   try {

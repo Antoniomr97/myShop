@@ -10,10 +10,10 @@ const {
 const productsRouter = require("express").Router();
 
 productsRouter.get("/", getProducts);
+productsRouter.post("/", createProduct);
 // productsRouter.get("/loadData", loadData);
 productsRouter.get("/:_id", getProductsById);
-productsRouter.post("/", createProduct);
-productsRouter.put("/:_id", updateProduct);
-productsRouter.delete("/:_id", deleteProduct);
+productsRouter.put("/:id", updateProduct);
+productsRouter.delete("/:id", deleteProduct);
 
 module.exports = productsRouter;

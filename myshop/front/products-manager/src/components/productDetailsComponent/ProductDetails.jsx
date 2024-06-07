@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { getProduct } from "../../api/productFetch";
+import { getProduct, deleteProduct } from "../../api/productFetch";
 import { useProduct } from "../../context/ProductContext";
 import styles from "./ProductDetails.module.css";
+import UploadProductDetails from "../uploadProductDetails/UploadProductDetails";
 
 export default function ProductDetails() {
   const [product, setProduct] = useState({});
+  const [isEditing, setIsEditing] = useState(false);
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [uploadVisible, setUploadVisible] = useState(false);
+
   const { selectedProductId } = useProduct();
 
   useEffect(() => {
@@ -21,6 +26,29 @@ export default function ProductDetails() {
   if (!selectedProductId) {
     return <p>No product selected.</p>;
   }
+
+  const handleUploadClick = () => {
+    setUploadVisible(!uploadVisible);
+    setIsEditing(!isEditing);
+  };
+
+  const showDeleteConfirmation = () => {
+    setShowConfirmation(true);
+  };
+
+  const cancelDelete = () => {
+    setShowConfirmation(false);
+  };
+
+  const confirmDelete = async () => {
+    setShowConfirmation(false);
+    await deleteProduct(product._id);
+    window.location.href = "/";
+  };
+
+  const handleProductUpdate = (updatedProduct) => {
+    setProduct(updatedProduct);
+  };
 
   return (
     <div className={styles.product_details_container}>
@@ -41,13 +69,41 @@ export default function ProductDetails() {
             <span className={styles.value}>{product.score}</span>
             <br />
             <div className={styles.buttons}>
-              <button className={styles.button}>Upload Product</button>
-              <button className={styles.button}>Delete Product</button>
+              <button className={styles.button} onClick={handleUploadClick}>
+                {isEditing ? "Cancel" : "Upload Product"}
+              </button>
+              <button
+                className={styles.button}
+                onClick={showDeleteConfirmation}
+              >
+                Delete Product
+              </button>
             </div>
           </div>
         </>
       ) : (
         <p>Loading...</p>
+      )}
+
+      {isEditing && (
+        <UploadProductDetails
+          id={product._id}
+          product={product}
+          handleProductUpdate={handleProductUpdate}
+          handleUploadClick={handleUploadClick}
+        />
+      )}
+
+      {showConfirmation && (
+        <div className={styles.confirmation_modal}>
+          <p>Are you sure you want to remove this product?</p>
+          <button className={styles.electionButtonYes} onClick={confirmDelete}>
+            Yes
+          </button>
+          <button className={styles.electionButtonNo} onClick={cancelDelete}>
+            No
+          </button>
+        </div>
       )}
     </div>
   );
