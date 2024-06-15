@@ -1,25 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { getAllProducts } from "../../api/productFetch";
+import React from "react";
 import styles from "./Products.module.css";
 import Link from "next/link";
 import { useProduct } from "../../context/ProductContext";
 import { useRouter } from "next/router";
 
-const Products = () => {
-  const [products, setProducts] = useState([]);
+const Products = ({ filters, products }) => {
   const { setSelectedProductId } = useProduct();
   const router = useRouter();
 
-  useEffect(() => {
-    const getAllProductsAux = async () => {
-      const productsAux = await getAllProducts();
-      setProducts(productsAux.data);
-    };
-    getAllProductsAux();
-  }, []);
-
   const handleClick = (id) => {
-    console.log("Setting selected product ID:", id);
     setSelectedProductId(id);
     router.push(
       {

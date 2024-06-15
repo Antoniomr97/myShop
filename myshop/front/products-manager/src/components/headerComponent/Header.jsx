@@ -2,11 +2,18 @@ import React, { useState } from "react";
 import Link from "next/link";
 import styles from "./Header.module.css";
 
-const Header = () => {
+const Header = ({ onSearch }) => {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const toggleDropdown = () => {
     setIsDropdownVisible(!isDropdownVisible);
+  };
+
+  const handleSearchChange = (e) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+    onSearch(value);
   };
 
   return (
@@ -23,7 +30,7 @@ const Header = () => {
           {isDropdownVisible && (
             <div className={styles.dropdownMenu}>
               <Link href="/changePassword" legacyBehavior>
-                <a className={styles.dropdownItem}>Change password </a>
+                <a className={styles.dropdownItem}>Change password</a>
               </Link>
               <Link href="/createProduct" legacyBehavior>
                 <a className={styles.dropdownItem}>Create product</a>
@@ -37,6 +44,8 @@ const Header = () => {
           type="text"
           placeholder="Search"
           className={styles.searchInput}
+          value={searchTerm}
+          onChange={handleSearchChange}
         />
         <Link href="/login" legacyBehavior>
           <a className={styles.loginButton}>Login</a>
