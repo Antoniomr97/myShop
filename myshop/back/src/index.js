@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const productsRouter = require("./routes/productRoutes");
+const usersRouter = require("./routes/userRoutes");
 const app = express();
 const port = 9000;
 
@@ -9,6 +10,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/products", productsRouter);
+app.use("/users", usersRouter);
 
 app.listen(port, () => {
   console.log(`Port ${port} running`);
