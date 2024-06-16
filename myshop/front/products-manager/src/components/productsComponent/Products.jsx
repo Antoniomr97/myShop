@@ -3,13 +3,33 @@ import styles from "./Products.module.css";
 import Link from "next/link";
 import { useProduct } from "../../context/ProductContext";
 import { useRouter } from "next/router";
+import { CreateCartProductFetch } from "../../api/cartFetch";
 
 const Products = ({ filters, products }) => {
-  const { setSelectedProductId } = useProduct();
+  const { userId } = useProduct(); // Obtén userId del contexto
   const router = useRouter();
 
+  const handleAddToCart = async (product) => {
+    try {
+      // Prepara los datos del producto para agregar al carrito
+      const data = {
+        userId: userId,
+        id: product._id,
+        image: product.image,
+        price: product.price,
+      };
+
+      // Llama a la función que realiza la solicitud POST al backend
+      const response = await CreateCartProductFetch(data);
+      console.log("Product added to cart:", response);
+      // Aquí podrías mostrar un mensaje de éxito o actualizar el estado del carrito en el contexto si es necesario
+    } catch (error) {
+      console.error("Error adding product to cart:", error);
+      // Manejo de errores: muestra un mensaje al usuario o maneja el error de otra manera
+    }
+  };
+
   const handleClick = (id) => {
-    setSelectedProductId(id);
     router.push(
       {
         pathname: "/productDetails",
@@ -51,7 +71,12 @@ const Products = ({ filters, products }) => {
               <div className={styles.priceContainer}>
                 <span>Price: {product.price}€</span>
                 <br />
-                <button className={styles.buttonToCart}>To Cart</button>
+                <button
+                  className={styles.buttonToCart}
+                  onClick={() => handleAddToCart(product)}
+                >
+                  To Cart
+                </button>
               </div>
             </div>
           </div>

@@ -4,11 +4,69 @@
   font-size: 2.3rem;
   font-weight: bold;
   width: 100%;
-  cursor: pointer;
+  position: relative;
 }
 
-.cart:hover,
-.cart:focus {
+.cartIcon:hover,
+.cartIcon:focus {
   color: purple;
   text-decoration: none;
+}
+
+.cartItems {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  min-width: 250px; /* Reducimos el ancho mínimo del carrito */
+  background-color: #413f3f;
+  border: 1px solid #ccc;
+  padding: 10px;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow-y: auto; /* Agregamos scroll si hay muchos productos */
+  max-height: 70vh; /* Limitamos la altura máxima para evitar que el carrito ocupe demasiado espacio */
+}
+
+.productsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.productItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #78268b;
+  padding: 10px;
+  background-color: #fff; /* Fondo blanco para destacar cada producto */
+  border-radius: 8px; /* Bordes redondeados */
+}
+
+.productImage {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%; /* Forma circular para la imagen */
+  margin-bottom: 10px; /* Espacio inferior entre la imagen y el nombre */
+}
+
+.productInfo {
+  text-align: center;
+}
+
+.productName {
+  margin: 5px 0;
+  font-weight: bold;
+  font-size: 1.1rem; /* Tamaño de fuente ligeramente reducido */
+}
+
+.productPrice {
+  color: #888;
+  font-size: 0.9rem; /* Tamaño de fuente reducido para el precio */
+  margin-bottom: 5px; /* Espacio inferior entre el nombre y el precio */
+}
+
+.buttonRemove {
+  cursor: pointer;
 }
