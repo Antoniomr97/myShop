@@ -9,7 +9,6 @@ export default function ChangePassword() {
   // Aquí agregamos un console.log para mostrar userId cada vez que se carga el componente
   console.log("User ID from context:", userId);
 
-  const [password, setPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [repeatNewPassword, setRepeatNewPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -32,7 +31,6 @@ export default function ChangePassword() {
       const updatedUser = await ChangePasswordFetch(userId, data);
       console.log("User updated:", updatedUser);
       setMessage("Password changed successfully");
-      setPassword("");
       setNewPassword("");
       setRepeatNewPassword("");
     } catch (error) {
