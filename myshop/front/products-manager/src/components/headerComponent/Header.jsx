@@ -30,7 +30,7 @@ const Header = ({ onSearch }) => {
           {isDropdownVisible && (
             <div className={styles.dropdownMenu}>
               <Link href="/changePassword" legacyBehavior>
-                <a className={styles.dropdownItem}>Change password</a>
+                <a className={styles.dropdownItem}>Change password </a>
               </Link>
               <Link href="/createProduct" legacyBehavior>
                 <a className={styles.dropdownItem}>Create product</a>

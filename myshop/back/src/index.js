@@ -3,6 +3,8 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const productsRouter = require("./routes/productRoutes");
 const usersRouter = require("./routes/userRoutes");
+require("dotenv").config();
+
 const app = express();
 const port = 9000;
 

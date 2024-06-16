@@ -4,10 +4,11 @@ const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
   const [selectedProductId, setSelectedProductId] = useState("");
+  const [userId, setUserId] = useState("");
 
   return (
     <ProductContext.Provider
-      value={{ selectedProductId, setSelectedProductId }}
+      value={{ selectedProductId, setSelectedProductId, userId, setUserId }}
     >
       {children}
     </ProductContext.Provider>
