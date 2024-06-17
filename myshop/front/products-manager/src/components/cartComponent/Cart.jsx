@@ -10,11 +10,10 @@ import {
 import { useProduct } from "../../context/ProductContext";
 
 export default function Cart() {
-  const { userId } = useProduct(); // Obtén userId del contexto
+  const { userId, refreshCart, setRefreshCart } = useProduct(); // Obtén userId, refreshCart y setRefreshCart del contexto
   const [cartVisible, setCartVisible] = useState(false); // Estado para controlar la visibilidad del carrito
   const [cartProducts, setCartProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [refreshCart, setRefreshCart] = useState(false); // Estado para forzar la actualización del carrito
   const [totalPrice, setTotalPrice] = useState(0); // Estado para almacenar el precio total del carrito
 
   useEffect(() => {
@@ -43,7 +42,7 @@ export default function Cart() {
     try {
       await deleteCartProductFetch(productId); // Llama al fetch para eliminar el producto del carrito
       console.log("Product removed from cart:", productId);
-      setRefreshCart(!refreshCart); // Activa el refreshCart para forzar la actualización del carrito
+      setRefreshCart((prevRefresh) => !prevRefresh); // Activa el refreshCart para forzar la actualización del carrito
     } catch (error) {
       console.error("Error removing product from cart:", error);
     }
@@ -52,7 +51,7 @@ export default function Cart() {
   const toggleCartVisibility = () => {
     setCartVisible(!cartVisible); // Cambia el estado para mostrar u ocultar el carrito
     if (!cartVisible) {
-      setRefreshCart(!refreshCart); // Activa el refreshCart cuando se muestra el carrito
+      setRefreshCart((prevRefresh) => !prevRefresh); // Activa el refreshCart cuando se muestra el carrito
     }
   };
 
@@ -78,7 +77,7 @@ export default function Cart() {
       {cartVisible && ( // Renderiza el contenido del carrito si cartVisible es true
         <div className={styles.cartItems}>
           {loading ? (
-            <p>Loading cart...</p>
+            <p>Please Login</p>
           ) : (
             <div className={styles.productsList}>
               {cartProducts.map((product) => (

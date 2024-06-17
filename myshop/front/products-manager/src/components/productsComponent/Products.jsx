@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { CreateCartProductFetch } from "../../api/cartFetch";
 
 const Products = ({ filters, products }) => {
-  const { userId, setSelectedProductId } = useProduct(); // Obtén userId y setSelectedProductId del contexto
+  const { userId, setSelectedProductId, setRefreshCart } = useProduct(); // Obtén userId, setSelectedProductId y setRefreshCart del contexto
   const router = useRouter();
 
   const handleAddToCart = async (product) => {
@@ -22,6 +22,10 @@ const Products = ({ filters, products }) => {
       // Llama a la función que realiza la solicitud POST al backend
       const response = await CreateCartProductFetch(data);
       console.log("Product added to cart:", response);
+
+      // Actualiza el estado refreshCart en el contexto para forzar la actualización del carrito
+      setRefreshCart((prevRefresh) => !prevRefresh);
+
       // Aquí podrías mostrar un mensaje de éxito o actualizar el estado del carrito en el contexto si es necesario
     } catch (error) {
       console.error("Error adding product to cart:", error);
