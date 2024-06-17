@@ -14,12 +14,19 @@ export default function Cart() {
   const [cartVisible, setCartVisible] = useState(false); // Estado para controlar la visibilidad del carrito
   const [cartProducts, setCartProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [refreshCart, setRefreshCart] = useState(false); // Estado para forzar la actualización del carrito
+  const [totalPrice, setTotalPrice] = useState(0); // Estado para almacenar el precio total del carrito
 
   useEffect(() => {
-    if (userId) {
+    if (userId && cartVisible) {
       fetchCartProducts();
     }
-  }, [userId]);
+  }, [userId, cartVisible, refreshCart]); // Agregar refreshCart a las dependencias
+
+  useEffect(() => {
+    // Calcular el precio total cada vez que cambian los productos del carrito
+    calculateTotalPrice();
+  }, [cartProducts]);
 
   const fetchCartProducts = async () => {
     try {
@@ -32,26 +39,11 @@ export default function Cart() {
     }
   };
 
-  const handleAddToCart = async (product) => {
-    try {
-      const data = {
-        id: product._id,
-        image: product.image,
-        price: product.price,
-      };
-      const addedProduct = await createCartProductFetch(data); // Llama al fetch para añadir producto al carrito
-      console.log("Product added to cart:", addedProduct);
-      fetchCartProducts(); // Actualiza la lista de productos del carrito después de añadir
-    } catch (error) {
-      console.error("Error adding product to cart:", error);
-    }
-  };
-
   const handleRemoveFromCart = async (productId) => {
     try {
       await deleteCartProductFetch(productId); // Llama al fetch para eliminar el producto del carrito
       console.log("Product removed from cart:", productId);
-      fetchCartProducts(); // Actualiza la lista de productos del carrito después de eliminar
+      setRefreshCart(!refreshCart); // Activa el refreshCart para forzar la actualización del carrito
     } catch (error) {
       console.error("Error removing product from cart:", error);
     }
@@ -59,6 +51,22 @@ export default function Cart() {
 
   const toggleCartVisibility = () => {
     setCartVisible(!cartVisible); // Cambia el estado para mostrar u ocultar el carrito
+    if (!cartVisible) {
+      setRefreshCart(!refreshCart); // Activa el refreshCart cuando se muestra el carrito
+    }
+  };
+
+  const calculateTotalPrice = () => {
+    const total = cartProducts.reduce(
+      (acc, product) => acc + product.productPrice,
+      0
+    );
+    setTotalPrice(total);
+  };
+
+  const handlePay = () => {
+    // Lógica para procesar el pago (a implementar)
+    console.log("Paying...");
   };
 
   return (
@@ -75,7 +83,7 @@ export default function Cart() {
           ) : (
             <div className={styles.productsList}>
               {cartProducts.map((product) => (
-                <div key={product._id} className={styles.productItem}>
+                <div key={product.productId} className={styles.productItem}>
                   <img
                     src={product.productImage}
                     alt={product.productName}
@@ -88,13 +96,19 @@ export default function Cart() {
                     </p>
                     <button
                       className={styles.buttonRemove}
-                      onClick={() => handleRemoveFromCart(product._id)}
+                      onClick={() => handleRemoveFromCart(product.productId)}
                     >
                       Remove
                     </button>
                   </div>
                 </div>
               ))}
+              <div className={styles.totalContainer}>
+                <p>Total Price: {totalPrice}€</p>
+                <button className={styles.payButton} onClick={handlePay}>
+                  Pay
+                </button>
+              </div>
             </div>
           )}
         </div>
