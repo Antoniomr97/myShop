@@ -1,5 +1,3 @@
-const { find, newProductModel } = require("../mocks/productMethodMongoDB");
-const productsDB = require("../initialData/productsDB");
 const cartModel = require("../models/Cart");
 
 //GET ALL PRODUCTS

@@ -4,32 +4,32 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import {
   getCartProductsFetch,
-  createCartProductFetch,
   deleteCartProductFetch,
 } from "../../api/cartFetch";
+import { CreateBillFetch } from "../../api/billFetch";
 import { useProduct } from "../../context/ProductContext";
 
 export default function Cart() {
-  const { userId, refreshCart, setRefreshCart } = useProduct(); // Obtén userId, refreshCart y setRefreshCart del contexto
-  const [cartVisible, setCartVisible] = useState(false); // Estado para controlar la visibilidad del carrito
+  const { userId, refreshCart, setRefreshCart } = useProduct();
+  const [cartVisible, setCartVisible] = useState(false);
   const [cartProducts, setCartProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [totalPrice, setTotalPrice] = useState(0); // Estado para almacenar el precio total del carrito
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [showPaymentMessage, setShowPaymentMessage] = useState(false);
 
   useEffect(() => {
     if (userId && cartVisible) {
       fetchCartProducts();
     }
-  }, [userId, cartVisible, refreshCart]); // Agregar refreshCart a las dependencias
+  }, [userId, cartVisible, refreshCart]);
 
   useEffect(() => {
-    // Calcular el precio total cada vez que cambian los productos del carrito
     calculateTotalPrice();
   }, [cartProducts]);
 
   const fetchCartProducts = async () => {
     try {
-      const products = await getCartProductsFetch(userId); // Pasa userId al fetch
+      const products = await getCartProductsFetch(userId);
       setCartProducts(products.data);
       setLoading(false);
     } catch (error) {
@@ -40,18 +40,18 @@ export default function Cart() {
 
   const handleRemoveFromCart = async (productId) => {
     try {
-      await deleteCartProductFetch(productId); // Llama al fetch para eliminar el producto del carrito
+      await deleteCartProductFetch(productId);
       console.log("Product removed from cart:", productId);
-      setRefreshCart((prevRefresh) => !prevRefresh); // Activa el refreshCart para forzar la actualización del carrito
+      setRefreshCart((prevRefresh) => !prevRefresh);
     } catch (error) {
       console.error("Error removing product from cart:", error);
     }
   };
 
   const toggleCartVisibility = () => {
-    setCartVisible(!cartVisible); // Cambia el estado para mostrar u ocultar el carrito
+    setCartVisible(!cartVisible);
     if (!cartVisible) {
-      setRefreshCart((prevRefresh) => !prevRefresh); // Activa el refreshCart cuando se muestra el carrito
+      setRefreshCart((prevRefresh) => !prevRefresh);
     }
   };
 
@@ -62,9 +62,21 @@ export default function Cart() {
     setTotalPrice(total);
   };
 
-  const handlePay = () => {
-    // Lógica para procesar el pago (a implementar)
-    console.log("Paying...");
+  const handlePay = async () => {
+    try {
+      const billData = {
+        userId: userId,
+        totalPrice: parseFloat(totalPrice),
+      };
+      const newBill = await CreateBillFetch(billData);
+      console.log("Bill created:", newBill);
+      setShowPaymentMessage(true);
+      setTimeout(() => {
+        setShowPaymentMessage(false); // Oculta el mensaje después de 3 segundos
+      }, 3000); // 3000 milisegundos = 3 segundos
+    } catch (error) {
+      console.error("Error creating bill:", error);
+    }
   };
 
   return (
@@ -74,7 +86,7 @@ export default function Cart() {
         className={styles.cartIcon}
         onClick={toggleCartVisibility}
       />
-      {cartVisible && ( // Renderiza el contenido del carrito si cartVisible es true
+      {cartVisible && (
         <div className={styles.cartItems}>
           {loading ? (
             <p>Please Login</p>
@@ -102,7 +114,10 @@ export default function Cart() {
                 </div>
               ))}
               <div className={styles.totalContainer}>
-                <p>Total Price: {totalPrice}€</p>
+                {showPaymentMessage && (
+                  <p className={styles.paymentMessage}>Payment Successful!</p>
+                )}
+                <p className={styles.totalPrice}>Total Price: {totalPrice}€</p>
                 <button className={styles.payButton} onClick={handlePay}>
                   Pay
                 </button>

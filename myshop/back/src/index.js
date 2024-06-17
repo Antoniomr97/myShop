@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const productsRouter = require("./routes/productRoutes");
 const usersRouter = require("./routes/userRoutes");
 const CartRouter = require("./routes/cartRoutes");
+const BillRouter = require("./routes/billRoutes");
 require("dotenv").config();
 
 const app = express();
@@ -15,6 +16,7 @@ app.use(cors());
 app.use("/products", productsRouter);
 app.use("/users", usersRouter);
 app.use("/cart", CartRouter);
+app.use("/bill", BillRouter);
 
 app.listen(port, () => {
   console.log(`Port ${port} running`);
