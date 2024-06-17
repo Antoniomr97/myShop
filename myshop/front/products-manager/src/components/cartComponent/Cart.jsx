@@ -5,7 +5,7 @@ import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import {
   getCartProductsFetch,
   deleteCartProductFetch,
-  deleteProductsByUserId, // Importa la función para eliminar productos por userId
+  deleteProductsByUserId,
 } from "../../api/cartFetch";
 import { CreateBillFetch } from "../../api/billFetch";
 import { useProduct } from "../../context/ProductContext";
@@ -76,6 +76,12 @@ export default function Cart() {
       await deleteProductsByUserId(userId);
 
       setShowPaymentMessage(true);
+
+      // Ocultar el mensaje después de 3 segundos
+      setTimeout(() => {
+        setShowPaymentMessage(false);
+      }, 3000);
+
       setCartProducts([]); // Limpiar el carrito localmente en el estado
     } catch (error) {
       console.error("Error creating bill:", error);
@@ -118,7 +124,9 @@ export default function Cart() {
               ))}
               <div className={styles.totalContainer}>
                 {showPaymentMessage && (
-                  <p className={styles.paymentMessage}>Payment Successful!</p>
+                  <p className={`${styles.paymentMessage} ${styles.show}`}>
+                    Payment Successful!
+                  </p>
                 )}
                 <p className={styles.totalPrice}>Total Price: {totalPrice}€</p>
                 <button className={styles.payButton} onClick={handlePay}>
