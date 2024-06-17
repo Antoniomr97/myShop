@@ -5,6 +5,7 @@ import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import {
   getCartProductsFetch,
   deleteCartProductFetch,
+  deleteProductsByUserId, // Importa la función para eliminar productos por userId
 } from "../../api/cartFetch";
 import { CreateBillFetch } from "../../api/billFetch";
 import { useProduct } from "../../context/ProductContext";
@@ -70,10 +71,12 @@ export default function Cart() {
       };
       const newBill = await CreateBillFetch(billData);
       console.log("Bill created:", newBill);
+
+      // Eliminar todos los productos del carrito por userId después de pagar
+      await deleteProductsByUserId(userId);
+
       setShowPaymentMessage(true);
-      setTimeout(() => {
-        setShowPaymentMessage(false); // Oculta el mensaje después de 3 segundos
-      }, 3000); // 3000 milisegundos = 3 segundos
+      setCartProducts([]); // Limpiar el carrito localmente en el estado
     } catch (error) {
       console.error("Error creating bill:", error);
     }

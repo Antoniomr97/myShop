@@ -47,3 +47,21 @@ export const CreateCartProductFetch = async (data) => {
     throw error;
   }
 };
+
+export const deleteProductsByUserId = async (userId) => {
+  try {
+    const response = await fetch(`http://localhost:9000/cart/${userId}`, {
+      method: "DELETE",
+    });
+    const data = await response.json();
+    if (response.ok) {
+      console.log("Product Deleted Successfully");
+    } else {
+      throw new Error(data.error);
+    }
+    return data;
+  } catch (error) {
+    console.error("Error deleting product:", error);
+    throw error;
+  }
+};

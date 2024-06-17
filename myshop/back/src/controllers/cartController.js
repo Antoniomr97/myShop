@@ -57,8 +57,30 @@ const deleteCartProduct = async (req, res) => {
   }
 };
 
+//DELETE AL PRODUCT WITH THE SAME USERID
+const deleteProductsByUserId = async (req, res) => {
+  const { userId } = req.params;
+
+  try {
+    const deleteResult = await Cart.deleteMany({ userId: userId });
+
+    if (deleteResult.deletedCount > 0) {
+      res
+        .status(200)
+        .json({ message: `Deleted all products for userId ${userId}` });
+    } else {
+      res
+        .status(404)
+        .json({ message: `No products found for userId ${userId}` });
+    }
+  } catch (error) {
+    console.error("Error deleting products:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
 module.exports = {
   getCartProducts,
   addCartProduct,
   deleteCartProduct,
+  deleteProductsByUserId,
 };
