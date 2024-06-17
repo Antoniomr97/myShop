@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { CreateCartProductFetch } from "../../api/cartFetch";
 
 const Products = ({ filters, products }) => {
-  const { userId } = useProduct(); // Obtén userId del contexto
+  const { userId, setSelectedProductId } = useProduct(); // Obtén userId y setSelectedProductId del contexto
   const router = useRouter();
 
   const handleAddToCart = async (product) => {
@@ -30,6 +30,7 @@ const Products = ({ filters, products }) => {
   };
 
   const handleClick = (id) => {
+    setSelectedProductId(id); // Establecer el ID del producto seleccionado en el contexto
     router.push(
       {
         pathname: "/productDetails",

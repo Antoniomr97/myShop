@@ -1,94 +1,105 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { useProduct } from "../../context/ProductContext";
 import styles from "./UploadProductDetails.module.css";
-import { updateProduct } from "../../api/productFetch";
+import { updateProduct, getProductById } from "../../api/productFetch";
 
-export default function UploadProductDetails(props) {
-  const { id, product, handleProductUpdate, handleUploadClick } = props;
+export default function UploadProductDetails() {
+  const { selectedProductId, setSelectedProductId } = useProduct();
+  const router = useRouter();
+  const { id: queryId } = router.query;
+  const id = selectedProductId || queryId;
 
-  const [image, setImage] = useState("");
-  const [name, setName] = useState("");
-  const [category, setCategory] = useState("");
-  const [price, setPrice] = useState(0);
-  const [score, setScore] = useState(0);
-  const [visible, setVisible] = useState(true);
+  const [product, setProduct] = useState({
+    image: "",
+    name: "",
+    category: "",
+    price: 0,
+    score: 0,
+  });
 
-  const handlerOnChangeImage = (e) => {
-    setImage(e.target.value);
-  };
+  useEffect(() => {
+    if (queryId) {
+      setSelectedProductId(queryId); // Actualizar el ID del producto seleccionado en el contexto si viene de la URL
+    }
+  }, [queryId, setSelectedProductId]);
 
-  const handlerOnChangeName = (e) => {
-    setName(e.target.value);
-  };
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const response = await getProductById(id);
+        setProduct(response.data);
+      } catch (error) {
+        console.error("Error fetching product:", error);
+      }
+    };
 
-  const handlerOnChangeCategory = (e) => {
-    setCategory(e.target.value);
-  };
+    if (id) {
+      fetchProduct();
+    }
+  }, [id]);
 
-  const handlerOnChangePrice = (e) => {
-    setPrice(e.target.value);
-  };
-
-  const handlerOnChangeScore = (e) => {
-    setScore(parseInt(e.target.value));
+  const handlerOnChange = (e) => {
+    const { name, value } = e.target;
+    setProduct((prevProduct) => ({
+      ...prevProduct,
+      [name]: name === "score" || name === "price" ? parseFloat(value) : value,
+    }));
   };
 
   const uploadProduct = async () => {
     console.log("Uploading product with ID:", id);
     try {
-      if (typeof score !== "undefined" && score !== "") {
-        const response = await updateProduct(id, {
-          image,
-          name,
-          category,
-          price,
-          score,
-        });
-        console.log("Product updated:", response);
-        handleProductUpdate(response.data);
-        setVisible(false);
-        handleUploadClick();
-      } else {
-        console.log("Score is undefined or empty. Skipping update.");
-      }
+      const response = await updateProduct(id, product);
+      console.log("Product updated:", response);
+      setProduct(response.data); // Actualizar el estado con los nuevos datos del producto
+      router.push("/"); // Redirigir a la página raíz
     } catch (error) {
       console.error("Error updating product:", error);
     }
   };
 
   return (
-    <div
-      className={styles.edit_container}
-      style={{ display: visible ? "block" : "none" }}
-    >
+    <div className={styles.edit_container}>
       <h3>Updating Product Details</h3>
       <input
         className={styles.updateInput}
         type="text"
-        onChange={handlerOnChangeImage}
+        name="image"
+        value={product.image}
+        onChange={handlerOnChange}
         placeholder="New URL Image"
       />
       <input
         className={styles.updateInput}
         type="text"
-        onChange={handlerOnChangeName}
+        name="name"
+        value={product.name}
+        onChange={handlerOnChange}
         placeholder="New Name"
       />
       <input
         className={styles.updateInput}
         type="text"
-        onChange={handlerOnChangeCategory}
+        name="category"
+        value={product.category}
+        onChange={handlerOnChange}
         placeholder="New Gender"
       />
       <input
         className={styles.updateInput}
         type="number"
-        onChange={handlerOnChangePrice}
+        name="price"
+        value={product.price}
+        onChange={handlerOnChange}
         placeholder="New Price"
       />
       <input
         className={styles.updateInput}
         type="number"
-        onChange={handlerOnChangeScore}
+        name="score"
+        value={product.score}
+        onChange={handlerOnChange}
         placeholder="New Score"
       />
       <div>

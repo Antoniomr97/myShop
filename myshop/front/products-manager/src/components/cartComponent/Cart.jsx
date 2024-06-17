@@ -57,10 +57,9 @@ export default function Cart() {
   };
 
   const calculateTotalPrice = () => {
-    const total = cartProducts.reduce(
-      (acc, product) => acc + product.productPrice,
-      0
-    );
+    const total = cartProducts
+      .reduce((acc, product) => acc + product.productPrice, 0)
+      .toFixed(2);
     setTotalPrice(total);
   };
 
@@ -96,7 +95,7 @@ export default function Cart() {
                     </p>
                     <button
                       className={styles.buttonRemove}
-                      onClick={() => handleRemoveFromCart(product.productId)}
+                      onClick={() => handleRemoveFromCart(product._id)}
                     >
                       Remove
                     </button>
