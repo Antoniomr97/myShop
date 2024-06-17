@@ -3,10 +3,11 @@
   text-align: left;
   font-size: 1.2rem;
   font-weight: bold;
-  width: 100%;
+  width: 80%;
   background-color: rgb(159, 162, 164);
   padding: 10px;
   border-radius: 0.3rem;
+  border: solid 2px black;
 }
 
 .price {

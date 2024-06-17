@@ -1,26 +1,40 @@
-import React, { useEffect, useState } from "react";
-import { getAllProducts } from "../../api/productFetch";
+import React from "react";
 import styles from "./Products.module.css";
 import Link from "next/link";
 import { useProduct } from "../../context/ProductContext";
 import { useRouter } from "next/router";
+import { CreateCartProductFetch } from "../../api/cartFetch";
 
-const Products = () => {
-  const [products, setProducts] = useState([]);
-  const { setSelectedProductId } = useProduct();
+const Products = ({ filters, products }) => {
+  const { userId, setSelectedProductId, setRefreshCart } = useProduct(); // Obtén userId, setSelectedProductId y setRefreshCart del contexto
   const router = useRouter();
 
-  useEffect(() => {
-    const getAllProductsAux = async () => {
-      const productsAux = await getAllProducts();
-      setProducts(productsAux.data);
-    };
-    getAllProductsAux();
-  }, []);
+  const handleAddToCart = async (product) => {
+    try {
+      // Prepara los datos del producto para agregar al carrito
+      const data = {
+        userId: userId,
+        id: product._id,
+        image: product.image,
+        price: product.price,
+      };
+
+      // Llama a la función que realiza la solicitud POST al backend
+      const response = await CreateCartProductFetch(data);
+      console.log("Product added to cart:", response);
+
+      // Actualiza el estado refreshCart en el contexto para forzar la actualización del carrito
+      setRefreshCart((prevRefresh) => !prevRefresh);
+
+      // Aquí podrías mostrar un mensaje de éxito o actualizar el estado del carrito en el contexto si es necesario
+    } catch (error) {
+      console.error("Error adding product to cart:", error);
+      // Manejo de errores: muestra un mensaje al usuario o maneja el error de otra manera
+    }
+  };
 
   const handleClick = (id) => {
-    console.log("Setting selected product ID:", id);
-    setSelectedProductId(id);
+    setSelectedProductId(id); // Establecer el ID del producto seleccionado en el contexto
     router.push(
       {
         pathname: "/productDetails",
@@ -62,7 +76,12 @@ const Products = () => {
               <div className={styles.priceContainer}>
                 <span>Price: {product.price}€</span>
                 <br />
-                <button className={styles.buttonToCart}>To Cart</button>
+                <button
+                  className={styles.buttonToCart}
+                  onClick={() => handleAddToCart(product)}
+                >
+                  To Cart
+                </button>
               </div>
             </div>
           </div>
