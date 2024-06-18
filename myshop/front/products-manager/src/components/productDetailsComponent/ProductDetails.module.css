@@ -8,7 +8,7 @@
 
 .key {
   font-weight: bold;
-  color: var(--color-primary); /* Color primario para etiquetas */
+  color: var(--color-primary);
 }
 
 .value {
@@ -16,7 +16,7 @@
   padding-left: 2.7rem;
   font-size: 1.25rem;
   font-weight: bold;
-  color: var(--color-black); /* Color de texto negro para valores */
+  color: var(--color-black);
 }
 
 .product_details {
@@ -42,23 +42,19 @@
   font-size: 1rem;
   padding: 0.5rem;
   margin: 0.5rem;
-  background-color: var(--color-primary); /* Color primario para botones */
-  color: var(--color-white); /* Texto blanco */
+  background-color: var(--color-primary);
+  color: var(--color-white);
   border: none;
   border-radius: 0.3rem;
   cursor: pointer;
 }
 
 .button:hover {
-  background-color: var(
-    --color-purple
-  ); /* Cambio de color al pasar el cursor */
+  background-color: var(--color-purple);
 }
 
 .confirmation_modal {
-  background-color: var(
-    --color-white
-  ); /* Fondo blanco para modal de confirmación */
+  background-color: var(--color-white);
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -74,16 +70,12 @@
   margin: 0 10px;
   padding: 10px 20px;
   border: none;
-  background-color: var(
-    --color-purple
-  ); /* Color morado oscuro para botones de modal */
-  color: var(--color-white); /* Texto blanco */
+  background-color: var(--color-purple);
+  color: var(--color-white);
   border-radius: 5px;
   cursor: pointer;
 }
 
 .confirmation_modal button:hover {
-  background-color: var(
-    --color-dark-purple
-  ); /* Cambio de color al pasar el cursor */
+  background-color: var(--color-dark-purple);
 }

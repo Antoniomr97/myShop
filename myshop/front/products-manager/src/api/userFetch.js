@@ -32,8 +32,8 @@ export const LoginFetch = async (data) => {
 
 export const ChangePasswordFetch = async (id, data) => {
   try {
-    console.log("Updating user with ID:", id); // Registro del ID
-    console.log("Data being sent:", data); // Registro de los datos
+    console.log("Updating user with ID:", id);
+    console.log("Data being sent:", data);
 
     const response = await fetch(`http://localhost:9000/users/${id}`, {
       method: "PUT",

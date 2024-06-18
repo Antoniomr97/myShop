@@ -32,7 +32,7 @@ export default function CreateProduct() {
   };
 
   const createNewProduct = async () => {
-    // Validar que todos los campos estén llenos
+    // VERIFY THAT ALL THE FIELDS ARE FILLED
     if (!image || !name || !category || !price || !score) {
       setError("Please fill in all fields.");
       return;
@@ -47,7 +47,8 @@ export default function CreateProduct() {
         score,
       });
       setMessage("Product Created");
-      setError(""); // Limpiar el mensaje de error si la creación fue exitosa
+      // CLEAR THE ERROR
+      setError("");
     } catch (error) {
       console.error("Error creating product:", error);
       setError("Failed to create product.");

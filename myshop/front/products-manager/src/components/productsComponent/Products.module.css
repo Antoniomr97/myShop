@@ -10,14 +10,14 @@
 .productsContainer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px; /* Añadir espacio entre los productos */
+  gap: 20px;
   justify-items: center;
   width: 100%;
 }
 
 .card {
-  background-color: var(--color-dark-gray); /* Nuevo color de fondo */
-  border: 2.2px solid #a069d7; /* Borde con color morado */
+  background-color: var(--color-dark-gray);
+  border: 2.2px solid #a069d7;
   border-radius: 8px;
   padding: 8px;
   text-align: center;
@@ -39,7 +39,7 @@
 
 .cardContent {
   font-size: 1rem;
-  color: var(--color-white); /* Color de texto blanco */
+  color: var(--color-white);
 }
 
 .priceContainer {
@@ -51,17 +51,15 @@
   font-size: 0.8rem;
   margin-top: 10px;
   padding: 5px 10px;
-  background-color: var(--color-dark-purple); /* Color de fondo morado oscuro */
-  color: var(--color-white); /* Texto blanco */
+  background-color: var(--color-dark-purple);
+  color: var(--color-white);
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
 .buttonToCart:hover {
-  background-color: var(
-    --color-purple
-  ); /* Cambio de color al pasar el cursor */
+  background-color: var(--color-purple);
 }
 
 .linkDetails {
@@ -69,12 +67,12 @@
   margin: 0;
   margin-right: 0.5em;
   cursor: pointer;
-  color: var(--color-beige); /* Color de texto beige */
+  color: var(--color-beige);
   text-decoration: none;
 }
 
 .linkDetails:hover,
 .linkDetails:focus {
-  color: var(--color-purple); /* Cambio de color al pasar el cursor */
+  color: var(--color-purple);
   text-decoration: none;
 }

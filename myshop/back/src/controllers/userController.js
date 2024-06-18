@@ -70,7 +70,7 @@ const login = async (req, res) => {
         .json({ message: "Email and password do not match" });
     }
 
-    // Mostrar el _id del usuario en la consola
+    // SHOW USER ID
     console.log("User ID:", user._id);
 
     const payload = {
@@ -115,10 +115,10 @@ const changePassword = async (req, res) => {
         .json({ status: "failed", error: "User not found" });
     }
 
-    // Encriptar la nueva contraseña
+    // ENCRYPT THE NEW PASSWORD
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Actualizar la contraseña del usuario
+    // UPDATE USER PASSWORD
     user.password = hashedPassword;
     await user.save();
 

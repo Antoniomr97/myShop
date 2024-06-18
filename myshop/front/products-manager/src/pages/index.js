@@ -50,7 +50,7 @@ const Home = () => {
       );
     }
 
-    // Search products by name
+    // SEARCH PRODUCT BY NAME
     if (searchTerm.trim() !== "") {
       const searchTermLowerCase = searchTerm.toLowerCase();
       filtered = filtered.filter((product) =>

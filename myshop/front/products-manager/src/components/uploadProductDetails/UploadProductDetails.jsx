@@ -20,7 +20,7 @@ export default function UploadProductDetails() {
 
   useEffect(() => {
     if (queryId) {
-      setSelectedProductId(queryId); // Actualizar el ID del producto seleccionado en el contexto si viene de la URL
+      setSelectedProductId(queryId); // UPLOAD PRODUCT ID
     }
   }, [queryId, setSelectedProductId]);
 
@@ -52,8 +52,8 @@ export default function UploadProductDetails() {
     try {
       const response = await updateProduct(id, product);
       console.log("Product updated:", response);
-      setProduct(response.data); // Actualizar el estado con los nuevos datos del producto
-      router.push("/"); // Redirigir a la página raíz
+      setProduct(response.data); // UPLOAD NEW DATA
+      router.push("/"); // BACK TO HOME
     } catch (error) {
       console.error("Error updating product:", error);
     }

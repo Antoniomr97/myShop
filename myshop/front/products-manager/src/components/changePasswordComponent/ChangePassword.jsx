@@ -4,9 +4,10 @@ import { ChangePasswordFetch } from "../../api/userFetch";
 import { useProduct } from "../../context/ProductContext";
 
 export default function ChangePassword() {
-  const { userId } = useProduct(); // Obtén el userId del contexto
+  //OBTEIN ID FROM THE CONTEXT
+  const { userId } = useProduct();
 
-  // Aquí agregamos un console.log para mostrar userId cada vez que se carga el componente
+  // SHOW USER ID IF THERE IS ANY PROBLEM
   console.log("User ID from context:", userId);
 
   const [newPassword, setNewPassword] = useState("");
@@ -20,7 +21,7 @@ export default function ChangePassword() {
         return;
       }
 
-      // Verifica que las dos contraseñas coincidan
+      // VERIFY THAT THEY ARE THE SAME PASSWORD
       if (newPassword !== repeatNewPassword) {
         setMessage("Passwords do not match");
         return;

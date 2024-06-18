@@ -1,14 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
 
 :root {
-  --color-primary: #10002b;
-  --color-secondary: #240046;
+  --color-primary: #10002b; /* PARA FONDOS */
+  --color-secondary: #240046; /* BORDES Y COLORES SECUNDARIOS */
   --color-tertiary: #3c096c;
-  --color-accent: #5a189a;
-  --color-highlight: #7b2cbf;
-  --color-light: #9d4edd;
+  --color-accent: #5a189a; /* BOTONES AL ACTIVARSE */
+  --color-highlight: #7b2cbf; /* MENSAJES */
+  --color-light: #9d4edd; /* FONDO CLARO */
   --color-lighter: #c77dff;
-  --color-lightest: #e0aaff;
+  --color-lightest: #e0aaff; /* TEXTO CLARO */
 }
 
 body {

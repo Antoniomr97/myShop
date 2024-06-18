@@ -72,17 +72,18 @@ export default function Cart() {
       const newBill = await CreateBillFetch(billData);
       console.log("Bill created:", newBill);
 
-      // Eliminar todos los productos del carrito por userId después de pagar
+      // DELETE ALL PRODUCTS BEFORE PAY
       await deleteProductsByUserId(userId);
 
       setShowPaymentMessage(true);
 
-      // Ocultar el mensaje después de 3 segundos
+      // MESSAGE SUCCESS FOR 3 SECONDS
       setTimeout(() => {
         setShowPaymentMessage(false);
       }, 3000);
 
-      setCartProducts([]); // Limpiar el carrito localmente en el estado
+      // CLEAR THE CART IN THE PAGE
+      setCartProducts([]);
     } catch (error) {
       console.error("Error creating bill:", error);
     }

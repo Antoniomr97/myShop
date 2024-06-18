@@ -23,8 +23,10 @@ export const deleteProduct = async (id) => {
 
 export const updateProduct = async (id, data) => {
   try {
-    console.log("Updating product with ID:", id); // Registro del ID
-    console.log("Data being sent:", data); // Registro de los datos
+    //SHOW PRODUCT ID
+    console.log("Updating product with ID:", id);
+    //SHOW PRODUCT DATA
+    console.log("Data being sent:", data);
 
     const response = await fetch(`http://localhost:9000/products/${id}`, {
       method: "PUT",

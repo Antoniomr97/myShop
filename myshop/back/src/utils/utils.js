@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-//ARREGLAR PARA QUE .env funcione como variables de entorno
+//EL TOKEN ME HA DADO PROBLEMAS CON .ENV Y HE UTILIZADO LA ID CON CONTEXT COMO VARIABLE DE ENTORNO PARA EL LOGIN
 
 process.env.TOKEN_SECRET =
   "aeb3ef92f07b67a687a2750a8c95e4810bbafefecd8e2952caaf6aa950dacb23";

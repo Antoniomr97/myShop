@@ -20,35 +20,33 @@
   margin-bottom: 0.7rem;
   padding: 0.6rem;
   width: 200px;
-  background-color: var(--color-light); /* Fondo claro para campos de entrada */
-  border: 1px solid var(--color-black); /* Borde negro */
+  background-color: var(--color-light);
+  border: 1px solid var(--color-black);
   border-radius: 0.3rem;
-  font-size: 1.1rem; /* Tamaño de fuente aumentado */
-  color: var(--color-black); /* Color de texto negro */
+  font-size: 1.1rem;
+  color: var(--color-black);
 }
 
 .inputField:focus {
-  outline: none; /* Eliminar el contorno al enfocar */
-  border-color: var(--color-purple); /* Cambiar color del borde al enfocar */
+  outline: none; /* CLEAR OUTLINE */
+  border-color: var(--color-purple); /* CHANGE BORDER COLOR */
 }
 
 .inputField::placeholder {
-  color: var(--color-dark-purple); /* Color del placeholder en morado oscuro */
+  color: var(--color-dark-purple); /* CHANGE PLACEHOLDER COLOR */
 }
 
 .button {
   padding: 0.5rem 0.8rem;
-  background-color: var(--color-primary); /* Fondo primario para botón */
-  color: var(--color-white); /* Texto blanco */
+  background-color: var(--color-primary);
+  color: var(--color-white);
   border: none;
   border-radius: 0.3rem;
   cursor: pointer;
 }
 
 .button:hover {
-  background-color: var(
-    --color-purple
-  ); /* Cambiar color de fondo al pasar el cursor */
+  background-color: var(--color-purple);
 }
 
 .signupContainer {
@@ -64,11 +62,11 @@
 
 .signupButton {
   font-size: 1.2rem;
-  color: var(--color-black); /* Texto negro */
+  color: var(--color-black);
   text-decoration: none;
   font-weight: bold;
 }
 
 .error {
-  color: var(--color-error); /* Color de error */
+  color: var(--color-error);
 }

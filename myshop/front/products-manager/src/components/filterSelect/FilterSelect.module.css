@@ -4,10 +4,10 @@
   font-size: 1.2rem;
   font-weight: bold;
   width: 80%;
-  background-color: var(--color-secondary); /* Fondo secundario */
+  background-color: var(--color-secondary);
   padding: 10px;
   border-radius: 0.3rem;
-  border: 2px solid var(--color-black); /* Borde negro */
+  border: 2px solid var(--color-black);
 }
 
 .price {
@@ -15,22 +15,22 @@
   font-weight: bold;
   margin: 0;
   cursor: pointer;
-  color: var(--color-black); /* Texto negro */
+  color: var(--color-black);
 }
 
 .price:hover,
 .price:focus {
-  color: var(--color-purple); /* Texto morado en hover */
+  color: var(--color-purple);
   text-decoration: none;
 }
 
 .dropdownItem {
-  color: var(--color-black); /* Texto negro */
+  color: var(--color-black);
   text-decoration: none;
 }
 
 .filterHeader {
   margin: 0;
   margin-bottom: 10px;
-  color: var(--color-dark); /* Texto oscuro */
+  color: var(--color-dark);
 }

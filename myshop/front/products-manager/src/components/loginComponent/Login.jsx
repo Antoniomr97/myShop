@@ -9,17 +9,17 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { setUserId } = useProduct(); // Obtener el setter de userId desde el contexto
-  const router = useRouter(); // Usar el hook useRouter
+  const { setUserId } = useProduct(); // OBTEIN USERID FROM CONTEXT
+  const router = useRouter(); // FOR USE USEROUTER
 
   const handleLogin = async () => {
     try {
       const data = { email, password };
       const response = await LoginFetch(data);
-      setUserId(response.data.userId); // Almacenar el ID del usuario en el contexto
+      setUserId(response.data.userId); // SEND USERID TO CONTEXT
       console.log("Login Successful:", response);
-      setError(""); // Limpiar errores previos
-      router.push("/"); // Redirigir a la página principal
+      setError(""); // CLEAR ERRORS
+      router.push("/"); // BACK HOME
     } catch (err) {
       setError(err.message);
     }

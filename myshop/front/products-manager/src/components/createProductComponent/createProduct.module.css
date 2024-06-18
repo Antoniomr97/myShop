@@ -6,32 +6,32 @@
   height: 100%;
   width: 100%;
   font-size: 1.3rem;
-  color: var(--color-lightest); /* Texto claro */
+  color: var(--color-lightest);
 }
 
 .inputField {
   margin-bottom: 0.7rem;
   padding: 0.6rem;
   width: 200px;
-  border: 1px solid var(--color-secondary); /* Borde secundario */
-  border-radius: 5px; /* Bordes redondeados */
-  background-color: var(--color-lightest); /* Fondo claro */
-  color: var(--color-primary); /* Texto primario */
+  border: 1px solid var(--color-secondary);
+  border-radius: 5px;
+  background-color: var(--color-lightest);
+  color: var(--color-primary);
 }
 
 .button {
   padding: 0.5rem 0.8rem;
   font-size: 1.4rem;
   border-radius: 0.3rem;
-  background-color: var(--color-secondary); /* Fondo secundario */
-  color: var(--color-lightest); /* Texto claro */
+  background-color: var(--color-secondary);
+  color: var(--color-lightest);
   border: none;
   cursor: pointer;
 }
 
 .button:hover,
 .button:focus {
-  background-color: var(--color-accent); /* Fondo de acento */
+  background-color: var(--color-accent);
 }
 
 .header {
@@ -39,9 +39,9 @@
   font-size: 1.7rem;
   font-weight: bold;
   padding-bottom: 1rem;
-  color: var(--color-lightest); /* Texto claro */
+  color: var(--color-lightest);
 }
 
 .message {
-  color: var(--color-highlight); /* Mensaje de acento */
+  color: var(--color-highlight);
 }
