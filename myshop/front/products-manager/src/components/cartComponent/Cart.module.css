@@ -5,11 +5,12 @@
   font-weight: bold;
   width: 100%;
   position: relative;
+  color: var(--color-lightest);
 }
 
 .cartIcon:hover,
 .cartIcon:focus {
-  color: purple;
+  color: var(--color-highlight);
   text-decoration: none;
 }
 
@@ -17,14 +18,14 @@
   position: absolute;
   top: 100%;
   right: 0;
-  min-width: 250px; /* Reducimos el ancho mínimo del carrito */
-  background-color: #413f3f;
-  border: 1px solid #ccc;
+  min-width: 250px;
+  background-color: var(--color-secondary);
+  border: 1px solid var(--color-accent);
   padding: 10px;
   z-index: 1000;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow-y: auto; /* Agregamos scroll si hay muchos productos */
-  max-height: 70vh; /* Limitamos la altura máxima para evitar que el carrito ocupe demasiado espacio */
+  overflow-y: auto;
+  max-height: 70vh;
 }
 
 .productsList {
@@ -37,18 +38,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid #78268b;
+  border: 1px solid var(--color-highlight);
   padding: 10px;
-  background-color: #fff; /* Fondo blanco para destacar cada producto */
-  border-radius: 8px; /* Bordes redondeados */
+  background-color: var(--color-lightest);
+  border-radius: 8px;
 }
 
 .productImage {
   width: 100px;
   height: 100px;
   object-fit: cover;
-  border-radius: 50%; /* Forma circular para la imagen */
-  margin-bottom: 10px; /* Espacio inferior entre la imagen y el nombre */
+  border-radius: 50%;
+  margin-bottom: 10px;
 }
 
 .productInfo {
@@ -58,21 +59,56 @@
 .productName {
   margin: 5px 0;
   font-weight: bold;
-  font-size: 1.1rem; /* Tamaño de fuente ligeramente reducido */
+  font-size: 1.1rem;
 }
 
 .productPrice {
-  color: #888;
-  font-size: 0.9rem; /* Tamaño de fuente reducido para el precio */
-  margin-bottom: 5px; /* Espacio inferior entre el nombre y el precio */
+  color: var(--color-primary);
+  font-size: 0.9rem;
+  margin-bottom: 5px;
 }
 
 .buttonRemove {
   cursor: pointer;
+  background-color: var(--color-accent);
+  color: var(--color-lightest);
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
 }
+
+.buttonRemove:hover,
+.buttonRemove:focus {
+  background-color: var(--color-highlight);
+}
+
+.totalContainer {
+  margin-top: 10px;
+}
+
 .paymentMessage {
   color: green;
   font-size: 16px;
   text-align: center;
   margin-top: 10px;
+}
+
+.totalPrice {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.payButton {
+  cursor: pointer;
+  background-color: var(--color-accent);
+  color: var(--color-lightest);
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.payButton:hover,
+.payButton:focus {
+  background-color: var(--color-highlight);
 }

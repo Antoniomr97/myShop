@@ -5,6 +5,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .loginContainer {
   display: flex;
   flex-direction: column;
@@ -19,10 +20,35 @@
   margin-bottom: 0.7rem;
   padding: 0.6rem;
   width: 200px;
+  background-color: var(--color-light); /* Fondo claro para campos de entrada */
+  border: 1px solid var(--color-black); /* Borde negro */
+  border-radius: 0.3rem;
+  font-size: 1.1rem; /* Tamaño de fuente aumentado */
+  color: var(--color-black); /* Color de texto negro */
+}
+
+.inputField:focus {
+  outline: none; /* Eliminar el contorno al enfocar */
+  border-color: var(--color-purple); /* Cambiar color del borde al enfocar */
+}
+
+.inputField::placeholder {
+  color: var(--color-dark-purple); /* Color del placeholder en morado oscuro */
 }
 
 .button {
   padding: 0.5rem 0.8rem;
+  background-color: var(--color-primary); /* Fondo primario para botón */
+  color: var(--color-white); /* Texto blanco */
+  border: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(
+    --color-purple
+  ); /* Cambiar color de fondo al pasar el cursor */
 }
 
 .signupContainer {
@@ -38,11 +64,11 @@
 
 .signupButton {
   font-size: 1.2rem;
-  color: black;
+  color: var(--color-black); /* Texto negro */
   text-decoration: none;
   font-weight: bold;
 }
 
 .error {
-  color: red;
+  color: var(--color-error); /* Color de error */
 }

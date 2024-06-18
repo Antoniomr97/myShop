@@ -6,24 +6,42 @@
   height: 100%;
   width: 100%;
   font-size: 1.3rem;
+  color: var(--color-lightest); /* Texto claro */
 }
 
 .inputField {
   margin-bottom: 0.7rem;
   padding: 0.6rem;
   width: 200px;
+  border: 1px solid var(--color-secondary); /* Borde secundario */
+  border-radius: 5px; /* Bordes redondeados */
+  background-color: var(--color-lightest); /* Fondo claro */
+  color: var(--color-primary); /* Texto primario */
 }
 
 .button {
   padding: 0.5rem 0.8rem;
   font-size: 1.4rem;
   border-radius: 0.3rem;
+  background-color: var(--color-secondary); /* Fondo secundario */
+  color: var(--color-lightest); /* Texto claro */
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover,
+.button:focus {
+  background-color: var(--color-accent); /* Fondo de acento */
 }
 
 .header {
   margin-bottom: 0.3rem;
-  font-size: 1.4rem;
-  font-weight: bold;
   font-size: 1.7rem;
+  font-weight: bold;
   padding-bottom: 1rem;
+  color: var(--color-lightest); /* Texto claro */
+}
+
+.message {
+  color: var(--color-highlight); /* Mensaje de acento */
 }

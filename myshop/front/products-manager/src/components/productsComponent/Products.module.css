@@ -16,8 +16,8 @@
 }
 
 .card {
-  background-color: #fff;
-  border: 1px solid #ddd;
+  background-color: var(--color-dark-gray); /* Nuevo color de fondo */
+  border: 2.2px solid #a069d7; /* Borde con color morado */
   border-radius: 8px;
   padding: 8px;
   text-align: center;
@@ -27,9 +27,6 @@
   justify-content: space-between;
   width: 100%;
   max-width: 230px;
-  background-color: rgb(11, 11, 11);
-  color: beige;
-  border: solid purple 2.2px;
 }
 
 .productImage {
@@ -42,6 +39,7 @@
 
 .cardContent {
   font-size: 1rem;
+  color: var(--color-white); /* Color de texto blanco */
 }
 
 .priceContainer {
@@ -53,15 +51,17 @@
   font-size: 0.8rem;
   margin-top: 10px;
   padding: 5px 10px;
-  background-color: hsl(300, 93%, 12%);
-  color: white;
+  background-color: var(--color-dark-purple); /* Color de fondo morado oscuro */
+  color: var(--color-white); /* Texto blanco */
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
 .buttonToCart:hover {
-  background-color: purple;
+  background-color: var(
+    --color-purple
+  ); /* Cambio de color al pasar el cursor */
 }
 
 .linkDetails {
@@ -69,12 +69,12 @@
   margin: 0;
   margin-right: 0.5em;
   cursor: pointer;
-  color: beige;
+  color: var(--color-beige); /* Color de texto beige */
   text-decoration: none;
 }
 
 .linkDetails:hover,
 .linkDetails:focus {
-  color: purple;
+  color: var(--color-purple); /* Cambio de color al pasar el cursor */
   text-decoration: none;
 }

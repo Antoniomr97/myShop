@@ -3,8 +3,9 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #c7c6c6;
-  border-bottom: 3px solid #ddd;
+  background-color: var(--color-primary);
+  border-bottom: 3px solid var(--color-accent);
+  color: var(--color-lightest);
 }
 
 .leftSection {
@@ -31,6 +32,7 @@
   margin-right: 0.5em;
   cursor: pointer;
   text-decoration: none;
+  color: var(--color-lightest);
 }
 
 .profile {
@@ -38,18 +40,28 @@
   font-weight: bold;
   margin: 0;
   cursor: pointer;
+  color: var(--color-lightest);
 }
 
 .searchInput {
   padding: 0.5em;
   font-size: 1em;
   margin-right: 0.6em;
+  border: 2px solid var(--color-accent);
+  border-radius: 5px;
+  background-color: var(--color-secondary);
+  color: var(--color-lightest);
 }
 
 .loginButton {
   padding: 5px 10px;
   font-size: 1.2em;
   cursor: pointer;
+  text-decoration: none;
+  background-color: var(--color-accent);
+  border: none;
+  border-radius: 5px;
+  color: var(--color-lightest);
 }
 
 .link {
@@ -58,44 +70,47 @@
   margin: 0;
   margin-right: 0.5em;
   cursor: pointer;
-  color: black;
+  color: var(--color-lightest);
 }
 
 .link:hover,
 .link:focus {
-  color: purple;
+  color: var(--color-highlight);
   text-decoration: none;
 }
 
 .profile:hover,
 .profile:focus {
-  color: purple;
+  color: var(--color-highlight);
   text-decoration: none;
-}
-
-.loginButton {
-  padding: 5px 10px;
-  font-size: 1.2em;
-  cursor: pointer;
-  text-decoration: none;
-  background-color: transparent;
-  border: none;
-  color: black;
 }
 
 .loginButton:hover,
 .loginButton:focus {
-  color: purple;
+  color: var(--color-primary);
+  background-color: var(--color-light);
   text-decoration: none;
 }
 
+.dropdownMenu {
+  position: absolute;
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-accent);
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 10px;
+  z-index: 1000;
+}
+
 .dropdownItem {
-  color: black;
+  color: var(--color-lightest);
   text-decoration: none;
+  padding: 5px 0;
+  display: block;
 }
 
 .dropdownItem:hover,
 .dropdownItem:focus {
-  color: purple;
+  color: var(--color-highlight);
   text-decoration: none;
 }

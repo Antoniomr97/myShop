@@ -10,6 +10,6 @@ const CartRouter = require("express").Router();
 CartRouter.get("/", getCartProducts);
 CartRouter.post("/", addCartProduct);
 CartRouter.delete("/:id", deleteCartProduct);
-CartRouter.delete("/:userId", deleteProductsByUserId);
+CartRouter.delete("/deleteByUserId/:userId", deleteProductsByUserId);
 
 module.exports = CartRouter;

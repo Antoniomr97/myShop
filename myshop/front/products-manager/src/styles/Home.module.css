@@ -1,12 +1,16 @@
 .main {
   display: flex;
   justify-content: space-between;
-  background-color: #575757;
+  background-color: var(--color-secondary);
   padding: 20px;
 }
 
 .sidebar {
   width: 15%;
+  background-color: var(--color-tertiary);
+  color: var(--color-lightest);
+  padding: 10px;
+  border-radius: 8px;
 }
 
 .content {
@@ -14,4 +18,9 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  background-color: var(--color-primary);
+  color: var(--color-lightest);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

@@ -6,14 +6,37 @@
   height: 400px;
   margin: 0 auto;
   font-size: 1.5rem;
+  background-color: var(--color-secondary); /* Color de fondo */
+  color: var(--color-lightest); /* Color de texto */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
 }
+
 .updateInput {
   font-size: 1.2rem;
   padding: 0.6rem;
   margin: 0.2rem;
+  width: 100%; /* Ocupa todo el ancho disponible */
+  border: 1px solid var(--color-tertiary); /* Borde */
+  border-radius: 4px; /* Borde redondeado */
+  background-color: var(--color-primary); /* Color de fondo del input */
+  color: var(--color-lightest); /* Color de texto del input */
 }
 
 .uploadButton {
   font-size: 1.2rem;
   margin-top: 1rem;
+  padding: 0.5rem 1rem; /* Espaciado del botón */
+  background-color: var(--color-accent); /* Color de fondo del botón */
+  color: var(--color-lightest); /* Color de texto del botón */
+  border: none;
+  border-radius: 4px; /* Borde redondeado */
+  cursor: pointer;
+}
+
+.uploadButton:hover {
+  background-color: var(
+    --color-highlight
+  ); /* Cambia el color de fondo al pasar el cursor */
 }
