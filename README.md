@@ -28,6 +28,8 @@ MyShop es una estructura de tienda online altamente adaptable, diseñada para ag
   - Express.js
 
 - **Base de Datos**:
-  - MongoDB
+  - MongoDB (actualmente no disponible debido a problemas con el servidor online).
 
 ---
+
+Próximamente, se lanzará un proyecto similar con un backend enfocado en Python.
